@@ -1,0 +1,11 @@
+<!-- templates/home.html -->
+{% extends 'films/base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<h2>  Hi {{ user.username }} ! </h2>
+{% else %}
+  <h2>You are not log in</h2>
+{% endif %}
+{% endblock %}

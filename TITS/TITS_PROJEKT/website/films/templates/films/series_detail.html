@@ -1,0 +1,34 @@
+{% extends 'films/base.html' %}
+<title>{% block title %} Series detail {% endblock %}</title>
+
+
+{% block body %}
+{% if user.is_authenticated %}
+<img src=" {{series.series_logo}} ">
+<h1> Title : {{ series.series_title }}</h1>
+<h3> Director : {{series.series_director}}</h3>
+<h3> Genre : {{series.series_genre}}</h3>
+<h3> Actors : </h3>
+<ul>
+    {% for actor in film.actors_set.all %}
+        <li> {{ actor.first_name }} - {{ actor.last_name }}</li>
+    {% endfor%}
+</ul>
+<a href="/films/series/{{ series.id }}/update/">
+                        <button type="submit">Update Info</button>
+                    </a>
+
+{% else %}
+<img src=" {{series.series_logo}} ">
+<h1> Title : {{ series.series_title }}</h1>
+<h3> Director : {{series.series_director}}</h3>
+<h3> Genre : {{series.series_genre}}</h3>
+<h3> Actors : </h3>
+<ul>
+    {% for actor in film.actors_set.all %}
+        <li> {{ actor.first_name }} - {{ actor.last_name }}</li>
+    {% endfor%}
+</ul>
+{% endif %}
+
+{% endblock %}

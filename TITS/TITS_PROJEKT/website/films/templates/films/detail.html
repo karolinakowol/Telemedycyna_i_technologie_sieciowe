@@ -1,0 +1,35 @@
+{% extends 'films/base.html' %}
+<title>{% block title %} Film detail {% endblock %}</title>
+
+
+{% block body %}
+{% if user.is_authenticated %}
+<img src=" {{film.film_logo}} ">
+<h1> Title : {{ film.title }}</h1>
+<h3> Director : {{film.director}}</h3>
+<h3> Genre : {{film.film_genre}}</h3>
+<h3> Actors : </h3>
+<ul>
+    {% for actor in film.actors_set.all %}
+        <li> {{ actor.first_name }} - {{ actor.last_name }}</li>
+    {% endfor%}
+</ul>
+{% if film.owner.username == user.username %}
+<a href="/films/{{ film.id }}/update/">
+                        <button type="submit">Update Info</button>
+                    </a>
+{% endif%}
+{% else %}
+<img src=" {{film.film_logo}} ">
+<h1> Title : {{ film.title }}</h1>
+<h3> Director : {{film.director}}</h3>
+<h3> Genre : {{film.film_genre}}</h3>
+<h3> Actors : </h3>
+<ul>
+    {% for actor in film.actors_set.all %}
+        <li> {{ actor.first_name }} - {{ actor.last_name }}</li>
+    {% endfor%}
+</ul>
+{% endif %}
+
+{% endblock %}

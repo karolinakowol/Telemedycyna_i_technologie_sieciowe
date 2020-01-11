@@ -1,0 +1,63 @@
+{% extends 'films/base.html' %}
+{% block films_active %}active{% endblock %}
+{% block body %}
+<div class="albums-container container-fluid">
+    <div class="row"></div>
+    <div class="col-sm-15"></div>
+{% if all_series %}
+    {% if user.is_authenticated %}
+<h4>Here are all Series:</h4>
+        {% for series in all_series %}
+    <div class="col-sm-7 col-lg-5">
+        <div class="thumbnail">
+        <a href=" /films/series/{{ series.id }}" {{series.title}}>
+            <img src="{{series.series_logo}}" class="img-responsive">
+        </a>
+            <div class="capition">
+                <h2>{{series.series_title}}</h2>
+                <h4>{{series.series_director}}</h4>
+                <h5>{{series.series_genre}}</h5>
+                <!-- detail -->
+                <a href=" /films/series/{{ series.id }}/"  class="btn btn-primary btn-sm" role="button">View Details</a>
+                     <!-- delete -->
+
+                    <form action="/films/series/{{ series.id }}/delete/" method="get" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="album_id" value="{{ album.id }}" />
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        {% endfor %}
+        {% else %}
+<h4>Here are all Series:</h4>
+        {% for series in all_series %}
+    <div class="col-sm-7 col-lg-5">
+        <div class="thumbnail">
+        <a href=" /films/series/{{ series.id }}" {{series.title}}>
+            <img src="{{series.series_logo}}" class="img-responsive">
+        </a>
+            <div class="capition">
+                <h2>{{series.series_title}}</h2>
+                <h4>{{series.series_director}}</h4>
+                <h5>{{series.series__genre}}</h5>
+                <!-- detail -->
+                <a href=" /films/series/{{ series.id }}/"  class="btn btn-primary btn-sm" role="button">View Details</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        {% endfor %}
+{% endif %}
+{% else %}
+<h3> It isn't any series here</h3>
+{% endif %}
+
+{% endblock %}

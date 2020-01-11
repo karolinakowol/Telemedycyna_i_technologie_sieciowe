@@ -1,0 +1,65 @@
+{% extends 'films/base.html' %}
+{% block films_active %}active{% endblock %}
+{% block body %}
+<div class="albums-container container-fluid">
+    <div class="row"></div>
+    <div class="col-sm-15"></div>
+{% if all_films %}
+    {% if user.is_authenticated %}
+<h4>Here are all films:</h4>
+        {% for film in all_films %}
+    <div class="col-sm-7 col-lg-5">
+        <div class="thumbnail">
+        <a href=" /films/{{ film.id }}/" {{film.title}}>
+            <img src="{{film.film_logo}}" class="img-responsive">
+        </a>
+            <div class="capition">
+                <h2>{{film.title}}</h2>
+                <h4>{{film.director}}</h4>
+                <h5>{{film.film_genre}}</h5>
+                <!-- detail -->
+                <a href=" /films/{{ film.id }}/"  class="btn btn-primary btn-sm" role="button">View Details</a>
+                     <!-- delete -->
+                    {% if film.owner.username == user.username %}
+                    <form action="{{ film.id }}/delete/" method="get" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="album_id" value="{{ album.id }}" />
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                        {% endif%}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        {% endfor %}
+        {% else %}
+<h4>Here are all films:</h4>
+        {% for film in all_films %}
+    <div class="col-sm-7 col-lg-5">
+        <div class="thumbnail">
+        <a href=" /films/{{ film.id }}" {{film.title}}>
+            <img src="{{film.film_logo}}" class="img-responsive">
+        </a>
+            <div class="capition">
+                <h2>{{film.title}}</h2>
+                <h4>{{film.director}}</h4>
+                <h5>{{film.film_genre}}</h5>
+                <!-- detail -->
+                <a href=" /films/{{ film.id }}/"  class="btn btn-primary btn-sm" role="button">View Details</a>
+                     <!-- delete -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+        {% endfor %}
+{% endif %}
+{% else %}
+<h3> It isn't any films here</h3>
+{% endif %}
+
+{% endblock %}
