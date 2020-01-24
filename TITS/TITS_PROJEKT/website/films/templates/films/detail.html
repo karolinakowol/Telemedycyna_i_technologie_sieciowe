@@ -11,7 +11,7 @@
 <h3> Actors : </h3>
 <ul>
     {% for actor in film.actors_set.all %}
-        <li> {{ actor.first_name }} - {{ actor.last_name }}</li>
+    <h3> → <a href=" /films/actors/{{ actor.id }}/"> {{ actor.first_name }} - {{ actor.last_name }}</a></h3>
     {% endfor%}
 </ul>
 {% if film.owner.username == user.username %}
@@ -27,7 +27,7 @@
 <h3> Actors : </h3>
 <ul>
     {% for actor in film.actors_set.all %}
-        <li> {{ actor.first_name }} - {{ actor.last_name }}</li>
+    <h3> → <a href=" /films/actors/{{ actor.id }}/"> {{ actor.first_name }} - {{ actor.last_name }}</a></h3>
     {% endfor%}
 </ul>
 {% endif %}

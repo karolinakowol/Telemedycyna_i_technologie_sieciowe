@@ -20,14 +20,14 @@
                 <!-- detail -->
                 <a href=" /films/series/{{ series.id }}/"  class="btn btn-primary btn-sm" role="button">View Details</a>
                      <!-- delete -->
-
+                    {% if series.owner.username == user.username %}
                     <form action="/films/series/{{ series.id }}/delete/" method="get" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="album_id" value="{{ album.id }}" />
                                 <button type="submit" class="btn btn-default btn-sm">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </button>
-
+                    {%endif%}
             </div>
         </div>
     </div>

@@ -18,8 +18,13 @@
   <component name="ProjectId" id="1VeM64ZMEVYDRZ31GHPYKogfTHe" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/TITS_PROJEKT/website/films/static/films/images" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\komputronik\Desktop\Tits_projekt\TITS_PROJEKT\website\films\static\films\images" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

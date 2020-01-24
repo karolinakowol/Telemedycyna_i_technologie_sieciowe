@@ -25,6 +25,14 @@ class SeriesIndexView(generic.ListView):
         return Series.objects.all()
 
 
+class ActorsIndexView(generic.ListView):
+    template_name = 'films/actors_index.html'
+    context_object_name = 'all_actors'
+
+    def get_queryset(self):
+        return Actors.objects.all()
+
+
 class DetailView(generic.DetailView):
     model = Film
     template_name = 'films/detail.html'
@@ -33,6 +41,11 @@ class DetailView(generic.DetailView):
 class SeriesDetailView(generic.DetailView):
     model = Series
     template_name = 'films/series_detail.html'
+
+
+class ActorsDetailView(generic.DetailView):
+    model = Actors
+    template_name = 'films/actors_detail.html'
 
 
 class FilmCreate(CreateView):
@@ -48,6 +61,10 @@ class FilmCreate(CreateView):
 class SeriesCreate(CreateView):
     model = Series
     fields = ['series_director', 'series_title', 'series_genre', 'series_logo']
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super(SeriesCreate, self).form_valid(form)
 
 
 class FilmUpdate(UpdateView):

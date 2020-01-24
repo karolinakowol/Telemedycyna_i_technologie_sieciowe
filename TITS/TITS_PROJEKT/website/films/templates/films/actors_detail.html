@@ -1,0 +1,21 @@
+{% extends 'films/base.html' %}
+<title>{% block title %} Actor Detail {% endblock %}</title>
+{% block body %}
+<h1> Name : {{ actors.first_name }}</h1>
+<h2> Last Name : {{actors.last_name}}</h2>
+<img src=" {{ actors.actor_photo }}">
+<h3>Film played: </h3>
+<ul>
+    {% for film in actors.film_played.all %}
+        <h4> → <a href=" /films/{{film.id }}/"> {{ film.title}} </a></h4>
+    {% endfor %}
+</ul>
+
+<h3>Series played: </h3>
+<ul>
+    {% for series in actors.series_played.all %}
+        <h4> → <a href=" /films/{{series.id}}/"> {{ series.series_title }} </a></h4>
+    {% endfor %}
+</ul>
+
+{% endblock %}
