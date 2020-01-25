@@ -6,6 +6,9 @@
 {% if user.is_authenticated %}
 <h2>  Hi {{ user.username }} ! </h2>
 {% else %}
-  <h2>You are not log in</h2>
+<h2>Hello stranger!</h2>
+<h1>You are not log in </h1>
+<a href="{% url 'login' %}"> <h3>Login here </h3></a>
+<a href="/films/signup/">  <h3>Sign up here </h3> </a>
 {% endif %}
 {% endblock %}

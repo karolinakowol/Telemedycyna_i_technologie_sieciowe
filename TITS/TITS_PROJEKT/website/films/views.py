@@ -1,11 +1,7 @@
 from .models import Film, Actors, Series
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.views.generic import View
-from .forms import UserForm
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -57,7 +53,6 @@ class FilmCreate(CreateView):
         return super(FilmCreate, self).form_valid(form)
 
 
-# Create Series
 class SeriesCreate(CreateView):
     model = Series
     fields = ['series_director', 'series_title', 'series_genre', 'series_logo']
@@ -72,7 +67,6 @@ class FilmUpdate(UpdateView):
     fields = ['director', 'title', 'film_genre', 'film_logo']
 
 
-# Series Update
 class SeriesUpdate(UpdateView):
     model = Series
     fields = ['series_director', 'series_title', 'series_genre', 'series_logo']
@@ -83,7 +77,6 @@ class FilmDelete(DeleteView):
     success_url = reverse_lazy('films:index')
 
 
-# Series Delete
 class SeriesDelete(DeleteView):
     model = Series
     success_url = reverse_lazy('films:series-index')
